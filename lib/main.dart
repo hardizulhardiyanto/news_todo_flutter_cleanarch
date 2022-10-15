@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/src/features/news/presentation/pages/news_screen.dart';
+import 'app.dart';
 import 'injector.dart' as di;
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await di.init();
-  runApp(const MyApp());
+  runApp(const App());
 }
 
 class MyApp extends StatelessWidget {
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomeScreen(),
+      home: NewsListPage(),
     );
   }
 }

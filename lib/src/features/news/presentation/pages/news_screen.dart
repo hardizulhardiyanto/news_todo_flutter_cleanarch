@@ -5,12 +5,12 @@ import '../manager/news_controller.dart';
 import '../../../../../injector.dart';
 import '../../../../core/response_classify.dart';
 
-class HomeScreen extends StatefulWidget {
+class NewsListPage extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _NewsListPageState createState() => _NewsListPageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _NewsListPageState extends State<NewsListPage> {
   final NewsController controller = Get.put(NewsController(getNewsUseCases: sl()));
 
   @override
