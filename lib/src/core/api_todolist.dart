@@ -1,11 +1,18 @@
 import 'package:dio/dio.dart';
 
 import 'customs_exeception.dart';
+import 'interceptors/interceptors.dart';
 
 class ApiTodoList {
   late Dio dio;
+  late final List<Interceptor>? interceptors;
 
-  ApiTodoList() {
+  ApiTodoList({ this.interceptors }) {
+    var loggingInterceptor = getLoggingInterceptor();
+    var errorInterceptor = getErrorInterceptor(loggingInterceptor);
+    var responseInterceptor = getResponseInterceptor(loggingInterceptor);
+    var requestInterceptor = getRequestInterceptor(loggingInterceptor);
+
     dio = Dio(
       BaseOptions(
         validateStatus: (status) {
@@ -17,6 +24,25 @@ class ApiTodoList {
         receiveTimeout: 30000,
       ),
     );
+
+    dio.interceptors.add(InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          await requestInterceptor.getRequestInterceptor(options);
+          return handler.next(options);
+        },
+        onResponse: (response, handler) async {
+          responseInterceptor.getResponseInterceptor(response);
+          return handler.next(response); // continue
+          // If you want to reject the request with a error message,
+          // you can reject a `DioError` object eg: return `dio.reject(dioError)`
+        }, onError: (DioError e, handler) async {
+      errorInterceptor.getErrorInterceptors(e);
+      // Do something with response error
+      return handler.next(e); //continue
+      // If you want to resolve the request with some custom data，
+      // you can resolve a `Response` object eg: return `dio.resolve(response)`.
+    }
+    ));
   }
 
   Future<Map<String, dynamic>> get(
