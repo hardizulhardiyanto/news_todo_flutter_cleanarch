@@ -1,6 +1,6 @@
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_app/src/component/index.dart';
+import '../configure/routes.dart';
 import '../widget_utilities/index.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -86,6 +86,6 @@ class _SplashScreenState extends State<SplashScreen> {
   startTime() async {
     await Future.delayed(const Duration(milliseconds: 2000));
     //todo initials route
-    Navigator.of(context).pushNamedAndRemoveUntil(routeNewsList, (Route<dynamic> route) => false);
+    Navigator.of(context).pushNamedAndRemoveUntil(routeLogin, (Route<dynamic> route) => false);
   }
 }

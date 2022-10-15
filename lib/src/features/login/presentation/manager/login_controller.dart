@@ -13,16 +13,27 @@ class LoginController extends GetxController {
 
   ResponseClassify<LoginEntityResponse> get loginResult => _loginResult;
 
-  @override
-  void onInit() async {
+  Future<void> postLogin(LoginModelRequest request) async {
     _loginResult = ResponseClassify.loading();
     update();
     try {
-      _loginResult = ResponseClassify.completed( await getLoginUseCases.call(LoginModelRequest()));
+      _loginResult = ResponseClassify.completed( await getLoginUseCases.call(request));
     } catch (e) {
-      _loginResult = ResponseClassify.error(e.toString());
+    _loginResult = ResponseClassify.error(e.toString());
     }
     update();
+  }
+
+  @override
+  void onInit() async {
+    // _loginResult = ResponseClassify.loading();
+    // update();
+    // try {
+    //   _loginResult = ResponseClassify.completed( await getLoginUseCases.call(LoginModelRequest()));
+    // } catch (e) {
+    //   _loginResult = ResponseClassify.error(e.toString());
+    // }
+    // update();
     super.onInit();
   }
 }

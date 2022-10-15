@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'src/component/index.dart';
+import 'package:todo_app/src/configure/routes.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -21,14 +21,14 @@ class _AppState extends State<App> {
       },
       child: GetMaterialApp(
         key: _navigatorKey,
-        title: 'Todo App Hardy',
+        title: 'Todo App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: routeSplashScreen,
+        // initialRoute: routeSplashScreen,
         // todo development page
-        // initialRoute: router.routeAppointmentDoctor,
+        initialRoute: routeLogin,
         onGenerateRoute: generateRoute,
       ),
     );

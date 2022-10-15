@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:todo_app/src/core/api_todolist.dart';
 import 'package:todo_app/src/features/login/data/data_source/get_login_local_data_source.dart';
 import 'package:todo_app/src/features/login/data/data_source/get_login_remote_data_source.dart';
 
@@ -23,4 +24,7 @@ Future<void> injectorLogin() async {
   sl.registerLazySingleton<GetLoginLocalDataSource>(
           () => GetLoginLocalDataSourceImpl(localStorage: sl())
   );
+
+  //Core
+  sl.registerLazySingleton<ApiTodoList>(() => ApiTodoList());
 }
