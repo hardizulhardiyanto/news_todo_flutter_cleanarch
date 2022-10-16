@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../component/index.dart';
 import '../../../../widget_utilities/index.dart';
+import 'dashboard_banner.dart';
+import 'dashboard_body.dart';
 import 'dashboard_header.dart';
 
 class DashboardPages extends StatefulWidget {
@@ -14,7 +16,6 @@ class DashboardPages extends StatefulWidget {
 class _DashboardPagesState extends State<DashboardPages> {
   ScrollController _scrollController = new ScrollController();
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -48,26 +49,19 @@ class _DashboardPagesState extends State<DashboardPages> {
                 return <Widget> [
                   SliverToBoxAdapter(
                     child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.22,
+                      height: MediaQuery.of(context).size.height * 0.40,
                       child: Stack(
                         children: const [
                           //Header Here
-                          DashboardHeader()
+                          DashboardHeader(),
+                          DashboardBanner()
                         ],
                       ),
                     ),
                   )
                 ];
               },
-              body: RefreshIndicator(
-                  displacement: 200,
-                  strokeWidth: 3,
-                  color: white,
-                  backgroundColor: greenDoctor,
-                  key: _refreshIndicatorKey,
-                  onRefresh: () async {},
-                  child: Container()
-              )
+              body: DashboardBody()
           )
         ],
       ),
