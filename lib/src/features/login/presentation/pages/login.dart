@@ -70,6 +70,6 @@ class _LoginPagesState extends State<LoginPages> {
 
   void onCompletedRedirect() async {
     await Future.delayed( const Duration(milliseconds: 2000));
-    Navigator.of(context).pushNamedAndRemoveUntil(routeNewsList, (Route<dynamic> route) => false);
+    Navigator.of(context).pushNamedAndRemoveUntil(routeDashboard, (Route<dynamic> route) => false);
   }
 }

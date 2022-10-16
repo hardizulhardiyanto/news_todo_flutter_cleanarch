@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:todo_app/src/features/dashboard/presentation/pages/dashboard.dart';
 import 'package:todo_app/src/features/login/presentation/pages/login.dart';
 
 import '../features/news/presentation/pages/news_screen.dart';
@@ -9,6 +10,7 @@ import '../component/index.dart';
 const routeSplashScreen = "/splashscreen";
 const routeNewsList = "/listnews";
 const routeLogin = "/login";
+const routeDashboard = "/dashboard";
 
 Route<dynamic>? generateRoute (RouteSettings settings) {
   switch (settings.name){
@@ -27,6 +29,12 @@ Route<dynamic>? generateRoute (RouteSettings settings) {
     case routeLogin:
       return PageTransition(
           child: const LoginPages(),
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 1000)
+      );
+    case routeDashboard:
+      return PageTransition(
+          child: const DashboardPages(),
           type: PageTransitionType.fade,
           duration: const Duration(milliseconds: 1000)
       );

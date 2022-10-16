@@ -18,7 +18,6 @@ class LoginController extends GetxController {
     update();
     try {
       _loginResult = ResponseClassify.completed( await getLoginUseCases.call(request));
-      print("result >> $_loginResult");
     } catch (e) {
     _loginResult = ResponseClassify.error(e.toString());
     }
