@@ -1,3 +1,4 @@
+import 'package:flutter/animation.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
 import '../configure/routes.dart';
@@ -77,8 +78,14 @@ class _LoadingSplashScreenState extends State<LoadingSplashScreen> {
               child: Container(
                   margin: const EdgeInsets.only(bottom: 16),
                   child: const Text(
-                    "My Todo List",
-                    style: text20RubikW500Grey,
+                    "News Todo",
+                    style: TextStyle(
+                      fontFamily: 'Rubik',
+                      color: eliteBlue,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                        fontStyle: FontStyle.italic
+                    ),
                   )),
             )
           ],

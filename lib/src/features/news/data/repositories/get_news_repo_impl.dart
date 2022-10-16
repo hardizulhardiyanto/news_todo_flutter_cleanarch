@@ -25,4 +25,15 @@ class GetNewsRepositoryImpl implements GetNewsRepository {
       return await getNewsLocalDataSource.getCachedNews();
     }
   }
+
+  @override
+  Future<NewsEntity> getNewsEverything() async {
+    if (await connectionInfo.isConnected) {
+      final remoteNews = await getNewsRemoteDataSource.getNewsEverything();
+      getNewsLocalDataSource.cachedNewsEverything(remoteNews);
+      return remoteNews;
+    } else {
+      return await getNewsLocalDataSource.getCachedNewsEverything();
+    }
+  }
 }

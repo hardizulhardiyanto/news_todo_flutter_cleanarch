@@ -49,8 +49,14 @@ class _LoginFormState extends State<LoginForm> {
               child: Container(
                   margin: const EdgeInsets.only(bottom: 16),
                   child: const Text(
-                    "My Todo List",
-                    style: text20RubikW500Grey,
+                    "News Todo",
+                    style: TextStyle(
+                        fontFamily: 'Rubik',
+                        color: greyText20,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
+                        fontStyle: FontStyle.italic
+                    ),
                   )),
             ),
             AppDimens.verticalSpace16,
@@ -245,26 +251,27 @@ class _LoginFormState extends State<LoginForm> {
       isSubmitLogin = true;
     });
     String message = "All Field Required";
-    LoginModelRequest loginRequest = LoginModelRequest.fromJson({
-      'email': "muh.nurali43@gmail.com",
-      'password': "12345678"
-    });
-    controller.postLogin(loginRequest);
+    //todo for testing
+    // LoginModelRequest loginRequest = LoginModelRequest.fromJson({
+    //   'email': "muh.nurali43@gmail.com",
+    //   'password': "12345678"
+    // });
+    // controller.postLogin(loginRequest);
 
     // todo setelah develop dibuka
-    // if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty){
-    //   if (validateEmail(emailController.text) == null) {
-    //       LoginModelRequest loginRequest = LoginModelRequest.fromJson({
-    //       'email': emailController.text,
-    //       'password': passwordController.text
-    //       });
-    //       controller.postLogin(loginRequest);
-    //   } else {
-    //     message = validateEmail(emailController.text)!;
-    //     ShowToast.toast(message: message);
-    //   }
-    // } else {
-    //   ShowToast.toast(message: message);
-    // }
+    if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty){
+      if (validateEmail(emailController.text) == null) {
+          LoginModelRequest loginRequest = LoginModelRequest.fromJson({
+          'email': emailController.text,
+          'password': passwordController.text
+          });
+          controller.postLogin(loginRequest);
+      } else {
+        message = validateEmail(emailController.text)!;
+        ShowToast.toast(message: message);
+      }
+    } else {
+      ShowToast.toast(message: message);
+    }
   }
 }

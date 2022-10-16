@@ -42,26 +42,17 @@ class _DashboardPagesState extends State<DashboardPages> {
               decoration: BoxDecoration(gradient: gradientBlue),
             ),
           ),
-          NestedScrollView(
-              scrollDirection: Axis.vertical,
-              controller: _scrollController,
-              headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-                return <Widget> [
-                  SliverToBoxAdapter(
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.40,
-                      child: Stack(
-                        children: const [
-                          //Header Here
-                          DashboardHeader(),
-                          DashboardBanner()
-                        ],
-                      ),
-                    ),
-                  )
-                ];
-              },
-              body: DashboardBody()
+          Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                DashboardHeader(),
+                AppDimens.verticalSpace16,
+                DashboardBanner(),
+                AppDimens.verticalSpace12,
+                DashboardBody()
+              ],
+            ),
           )
         ],
       ),

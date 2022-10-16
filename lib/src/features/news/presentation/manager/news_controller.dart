@@ -11,17 +11,22 @@ class NewsController extends GetxController {
   NewsController({required this.getNewsUseCases});
 
   ResponseClassify<NewsEntity?> _newsList = ResponseClassify.loading();
+  ResponseClassify<NewsEntity?> _newsListEverything = ResponseClassify.initials();
 
   ResponseClassify<NewsEntity?> get newsList => _newsList;
+  ResponseClassify<NewsEntity?> get newsListEverything => _newsListEverything;
 
   @override
   void onInit() async {
     _newsList = ResponseClassify.loading();
+    _newsListEverything = ResponseClassify.loading();
     update();
     try {
       _newsList = ResponseClassify.completed(await getNewsUseCases.call(NoParams()));
+      _newsListEverything = ResponseClassify.completed(await getNewsUseCases.callNewsEverything(NoParams()));
     } catch (e) {
       _newsList = ResponseClassify.error(e.toString());
+      _newsListEverything = ResponseClassify.error(e.toString());
     }
     update();
     super.onInit();

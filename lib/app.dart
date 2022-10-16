@@ -26,7 +26,7 @@ class _AppState extends State<App> {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: routeLogin,
+        initialRoute: routeSplashScreen,
         // todo development page
         // initialRoute: routeNewsList,
         onGenerateRoute: generateRoute,

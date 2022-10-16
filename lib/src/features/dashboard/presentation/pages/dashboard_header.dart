@@ -39,7 +39,6 @@ class _DashboardHeaderState extends State<DashboardHeader> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.41,
       width: double.infinity,
       child: SafeArea(
           child: Container(

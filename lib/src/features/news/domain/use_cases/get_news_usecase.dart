@@ -11,4 +11,7 @@ class GetNewsUseCases extends UseCase<NewsEntity, NoParams> {
   Future<NewsEntity> call(NoParams params) async {
     return await repository.getNews();
   }
+  Future<NewsEntity> callNewsEverything(NoParams params) async {
+    return await repository.getNewsEverything();
+  }
 }
