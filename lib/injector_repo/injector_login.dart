@@ -19,7 +19,9 @@ Future<void> injectorLogin() async {
 
   //data sources
   sl.registerLazySingleton<GetLoginRemoteDataSource>(
-        () => GetLoginRemoteDataSourceImpl(apiTodoList: sl()),
+        () => GetLoginRemoteDataSourceImpl(
+            apiTodoList: sl()
+        ),
   );
   sl.registerLazySingleton<GetLoginLocalDataSource>(
           () => GetLoginLocalDataSourceImpl(localStorage: sl())

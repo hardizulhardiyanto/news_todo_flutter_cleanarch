@@ -1,10 +1,9 @@
 import 'dart:convert';
-
+import 'package:todo_app/src/core/api_provider.dart';
 import 'package:todo_app/src/core/api_todolist.dart';
 import 'package:todo_app/src/features/login/data/models/request/login_model_request.dart';
 import 'package:todo_app/src/features/login/data/models/response/login_model_response.dart';
 
-import '../models/response/login_model_response_two.dart';
 
 abstract class GetLoginRemoteDataSource {
   Future<LoginModelResponse> postLogin(LoginModelRequest request);
@@ -13,7 +12,9 @@ abstract class GetLoginRemoteDataSource {
 class GetLoginRemoteDataSourceImpl implements GetLoginRemoteDataSource{
   final ApiTodoList apiTodoList;
 
-  GetLoginRemoteDataSourceImpl({ required this.apiTodoList });
+  GetLoginRemoteDataSourceImpl({
+    required this.apiTodoList,
+  });
 
   @override
   Future<LoginModelResponse> postLogin(LoginModelRequest request) async {
@@ -23,10 +24,7 @@ class GetLoginRemoteDataSourceImpl implements GetLoginRemoteDataSource{
           jsonBodyRequest,
           null
     );
-    // final loginResultTwo = LoginModelResponseTwoUser.fromJson(jsonResponse);
-    LoginModelResponse responseModel = LoginModelResponse.fromJson(jsonResponse);
-    print("GetLoginDataRepo >>> ${responseModel}");
-
+    final responseModel = LoginModelResponse.fromJson(jsonResponse);
     return responseModel;
   }
 }

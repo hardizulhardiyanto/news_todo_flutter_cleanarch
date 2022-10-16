@@ -1,40 +1,44 @@
-import 'package:todo_app/src/features/login/domain/entities/response/login_entity_response.dart';
+import '../../../domain/entities/response/login_entity_response.dart';
 
-class LoginModelResponseUser extends UserEntity {
-  LoginModelResponseUser.fromJson(Map<String, dynamic> json) {
-    age = json['age']?.toInt();
-    id = json['_id']?.toString();
-    name = json['name']?.toString();
-    email = json['email']?.toString();
-    createdAt = json['createdAt']?.toString() as DateTime?;
-    updatedAt = json['updatedAt']?.toString() as DateTime?;
-    idKey = json['__v']?.toInt();
-  }
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['age'] = age;
-    data['_id'] = id;
-    data['name'] = name;
-    data['email'] = email;
-    data['createdAt'] = createdAt;
-    data['updatedAt'] = updatedAt;
-    data['__v'] = idKey;
-    return data;
-  }
-}
+// To parse this JSON data, do
+//
+//     final loginModelResponseUser = loginModelResponseUserFromJson(jsonString);
+
+import 'dart:convert';
+
+LoginModelResponse loginModelResponseUserFromJson(String str) => LoginModelResponse.fromJson(json.decode(str));
+
+String loginModelResponseUserToJson(LoginModelResponse data) => json.encode(data.toJson());
 
 class LoginModelResponse extends LoginEntityResponse {
+  LoginModelResponse.fromJson(Map<String, dynamic> json){
+    user = json["user"] == null ? null : User.fromJson(json["user"]);
+    token = json["token"];
+  }
+  Map<String, dynamic> toJson() => {
+    "user": user == null ? null : ( user as User).toJson(),
+    "token": token,
+  };
+}
 
-  LoginModelResponse.fromJson(Map<String, dynamic> json) {
-    user = ((json['user'] != null) ? LoginModelResponseUser.fromJson(json['user']) : null);
-    token = json['token']?.toString();
+class User extends UserEntity {
+  User.fromJson(Map<String, dynamic> json){
+    age = json["age"];
+    id = json["_id"];
+    name = json["name"];
+    email = json["email"];
+    createdAt = json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]);
+    updatedAt = json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]);
+    idKey = json["__v"];
   }
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    if (user != null) {
-      data['user'] = user;
-    }
-    data['token'] = token;
-    return data;
-  }
+
+  Map<String, dynamic> toJson() => {
+    "age": age == null ? null : age,
+    "_id": id == null ? null : id,
+    "name": name == null ? null : name,
+    "email": email == null ? null : email,
+    "createdAt": createdAt == null ? null : createdAt?.toIso8601String(),
+    "updatedAt": updatedAt == null ? null : updatedAt?.toIso8601String(),
+    "__v": idKey == null ? null : idKey,
+  };
 }

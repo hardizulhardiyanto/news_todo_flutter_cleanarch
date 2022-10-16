@@ -4,8 +4,6 @@ import 'package:todo_app/src/features/login/data/models/request/login_model_requ
 import 'package:todo_app/src/features/login/domain/entities/response/login_entity_response.dart';
 import 'package:todo_app/src/features/login/domain/use_case/get_login_usecase.dart';
 
-import '../../domain/entities/response/login_entity_response_two.dart';
-
 class LoginController extends GetxController {
   final GetLoginUseCases getLoginUseCases;
 
