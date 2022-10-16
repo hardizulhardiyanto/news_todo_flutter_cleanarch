@@ -1,9 +1,10 @@
-# todo_app
+# todo_news_app
 
 Flutter with Clean Architecture
 
 #login
-
+"email": "muh.nurali43@gmail.com",
+"password": "12345678"
 
 # Clean Architecture for Flutter
 References:
