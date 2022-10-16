@@ -4,12 +4,14 @@ import 'package:todo_app/src/features/login/data/models/request/login_model_requ
 import 'package:todo_app/src/features/login/domain/entities/response/login_entity_response.dart';
 import 'package:todo_app/src/features/login/domain/use_case/get_login_usecase.dart';
 
+import '../../domain/entities/response/login_entity_response_two.dart';
+
 class LoginController extends GetxController {
   final GetLoginUseCases getLoginUseCases;
 
   LoginController({ required this.getLoginUseCases });
 
-  ResponseClassify<LoginEntityResponse> _loginResult = ResponseClassify.loading();
+  ResponseClassify<LoginEntityResponse> _loginResult = ResponseClassify.initials();
 
   ResponseClassify<LoginEntityResponse> get loginResult => _loginResult;
 
@@ -18,22 +20,15 @@ class LoginController extends GetxController {
     update();
     try {
       _loginResult = ResponseClassify.completed( await getLoginUseCases.call(request));
+      print("result >> $_loginResult");
     } catch (e) {
     _loginResult = ResponseClassify.error(e.toString());
     }
     update();
   }
 
-  @override
-  void onInit() async {
-    // _loginResult = ResponseClassify.loading();
-    // update();
-    // try {
-    //   _loginResult = ResponseClassify.completed( await getLoginUseCases.call(LoginModelRequest()));
-    // } catch (e) {
-    //   _loginResult = ResponseClassify.error(e.toString());
-    // }
-    // update();
-    super.onInit();
-  }
+  // @override
+  // void onInit() async {
+  //   super.onInit();
+  // }
 }

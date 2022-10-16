@@ -2,7 +2,9 @@ import 'package:todo_app/src/core/connection_info.dart';
 import 'package:todo_app/src/features/login/data/data_source/get_login_local_data_source.dart';
 import 'package:todo_app/src/features/login/data/data_source/get_login_remote_data_source.dart';
 import 'package:todo_app/src/features/login/data/models/request/login_model_request.dart';
+import 'package:todo_app/src/features/login/data/models/response/login_model_response_two.dart';
 import 'package:todo_app/src/features/login/domain/entities/response/login_entity_response.dart';
+import 'package:todo_app/src/features/login/domain/entities/response/login_entity_response_two.dart';
 import 'package:todo_app/src/features/login/domain/repositories/get_login_domain_repo.dart';
 
 class GetLoginDataRepo implements GetLoginDomainRepo{

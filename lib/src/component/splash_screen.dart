@@ -1,10 +1,13 @@
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/src/component/loading_splashscreen.dart';
 import '../configure/routes.dart';
 import '../widget_utilities/index.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+
+  const SplashScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -25,60 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         height: double.infinity,
         color: white,
-        child: Stack(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.center,
-              child: Image.asset(
-                "assets/images/todo_logo.png",
-                width: 130,
-                height: 130,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const Align(
-              alignment: Alignment.center,
-              child: SpinKitRing(
-                color: black80,
-                size: 170,
-              ),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: Column(
-                children: const <Widget>[
-                  SizedBox(
-                    height: 165,
-                  ),
-                ],
-              ),
-            ),
-            Align(
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.30,
-                    ),
-                    const Text(
-                      'redirecting...',
-                      style: text12RubikNormalGrey,
-                    )
-                  ],
-                )
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                  margin: const EdgeInsets.only(bottom: 16),
-                  child: const Text(
-                    "My Todo List",
-                    style: text20RubikW500Grey,
-                  )),
-            )
-          ],
-        ),
+        child: LoadingSplashScreen(),
       ),
     );
   }

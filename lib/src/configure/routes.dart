@@ -14,7 +14,7 @@ Route<dynamic>? generateRoute (RouteSettings settings) {
   switch (settings.name){
     case routeSplashScreen:
       return PageTransition(
-          child: const SplashScreen(),
+          child: SplashScreen(),
           type: PageTransitionType.fade,
           duration: const Duration(milliseconds: 1000)
       );

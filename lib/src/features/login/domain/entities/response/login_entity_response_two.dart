@@ -1,5 +1,5 @@
-class LoginEntityResponse {
-  LoginEntityResponse({
+class LoginEntityResponseTwo {
+  LoginEntityResponseTwo({
     this.user,
     this.token,
   });

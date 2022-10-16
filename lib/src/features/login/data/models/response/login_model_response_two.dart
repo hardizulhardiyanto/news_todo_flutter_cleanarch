@@ -1,7 +1,7 @@
-import 'package:todo_app/src/features/login/domain/entities/response/login_entity_response.dart';
+import 'package:todo_app/src/features/login/domain/entities/response/login_entity_response_two.dart';
 
-class LoginModelResponseUser extends UserEntity {
-  LoginModelResponseUser.fromJson(Map<String, dynamic> json) {
+class LoginModelResponseTwoUser extends UserEntity{
+    LoginModelResponseTwoUser.fromJson(Map<String, dynamic> json) {
     age = json['age']?.toInt();
     id = json['_id']?.toString();
     name = json['name']?.toString();
@@ -23,10 +23,9 @@ class LoginModelResponseUser extends UserEntity {
   }
 }
 
-class LoginModelResponse extends LoginEntityResponse {
-
-  LoginModelResponse.fromJson(Map<String, dynamic> json) {
-    user = ((json['user'] != null) ? LoginModelResponseUser.fromJson(json['user']) : null);
+class LoginModelResponseTwo extends LoginEntityResponseTwo {
+  LoginModelResponseTwo.fromJson(Map<String, dynamic> json) {
+    user = ((json['user'] != null) ? LoginModelResponseTwoUser.fromJson(json['user']) : null);
     token = json['token']?.toString();
   }
   Map<String, dynamic> toJson() {

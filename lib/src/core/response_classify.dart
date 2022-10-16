@@ -9,10 +9,12 @@ class ResponseClassify<T> {
 
   ResponseClassify.error(this.error) : status = Status.error;
 
+  ResponseClassify.initials() : status = Status.initials;
+
   @override
   String toString() {
     return "Status : $status \n Message :  \n Data : $data error : $error";
   }
 }
 
-enum Status { loading, completed, error }
+enum Status { loading, completed, error, initials }

@@ -245,20 +245,26 @@ class _LoginFormState extends State<LoginForm> {
       isSubmitLogin = true;
     });
     String message = "All Field Required";
+    LoginModelRequest loginRequest = LoginModelRequest.fromJson({
+      'email': "muh.nurali43@gmail.com",
+      'password': "12345678"
+    });
+    controller.postLogin(loginRequest);
+
     // todo setelah develop dibuka
-    if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty){
-      if (validateEmail(emailController.text) == null) {
-          LoginModelRequest loginRequest = LoginModelRequest.fromJson({
-          'email': emailController.text,
-          'password': passwordController.text
-          });
-          controller.postLogin(loginRequest);
-      } else {
-        message = validateEmail(emailController.text)!;
-        ShowToast.toast(message: message);
-      }
-    } else {
-      ShowToast.toast(message: message);
-    }
+    // if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty){
+    //   if (validateEmail(emailController.text) == null) {
+    //       LoginModelRequest loginRequest = LoginModelRequest.fromJson({
+    //       'email': emailController.text,
+    //       'password': passwordController.text
+    //       });
+    //       controller.postLogin(loginRequest);
+    //   } else {
+    //     message = validateEmail(emailController.text)!;
+    //     ShowToast.toast(message: message);
+    //   }
+    // } else {
+    //   ShowToast.toast(message: message);
+    // }
   }
 }
